@@ -31,6 +31,7 @@ var Slider = (function ($) {
     /*global jQuery, setTimeout, clearTimeout*/
     var module = {
         npos: 0,
+        selIndex: new Array(),
         timer: null,
         config: function (config) {
             module.target    = config.target;
@@ -60,6 +61,21 @@ var Slider = (function ($) {
 
             $("#stopBtn").on("click", function(){
                 clearTimeout(module.timer);
+
+                // 寻找不重复的元素
+                while(true) {
+                    var index = module.npos;
+                    for(var i = 0; i < module.selIndex.length; i++) {
+                        if(module.selIndex[i] == index) {
+                            module.next();
+                            continue;
+                        }
+                    }
+
+
+                    module.selIndex.push(index);
+                    break;
+                }
             });
         },
         events: function () {
