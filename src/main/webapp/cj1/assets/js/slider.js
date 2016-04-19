@@ -41,18 +41,26 @@ var Slider = (function ($) {
             module.time      = config.time || 5000;
         },
         early: function () {
-            var self   = this,
+/*            var self   = this,
                 slider = self.target,
-                i, l;
+                i, l;*/
 
-            self.container.css({ width: self.tWidth });
+            /*            self.container.css({ width: self.tWidth });
             slider.append(self.pager());
 
             for (i = 0, l = self.max; i < l; i += 1) {
                 self.items(i + 1).insertBefore($('.slider-nav .next').parents('li'));
             }
 
-            slider.find('.bullet:first').addClass('active');
+            slider.find('.bullet:first').addClass('active');*/
+
+            $("#choujiangBtn").on("click", function(){
+                module.auto();
+            });
+
+            $("#stopBtn").on("click", function(){
+                clearTimeout(module.timer);
+            });
         },
         events: function () {
             var self   = this,
@@ -154,8 +162,8 @@ var Slider = (function ($) {
                 return;
             }
 
-            module.auto();
-            module.events();
+            //module.auto();
+            //module.events();
             module.early();
         }
     };
