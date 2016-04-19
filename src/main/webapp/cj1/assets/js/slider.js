@@ -91,7 +91,7 @@ var Slider = (function ($) {
             if (supports('transition')) {
                 module.container.css({ left: -module.npos * module.sWidth });
             } else {
-                module.container.animate({ left: -module.npos * module.sWidth }, 0);
+                module.container.animate({ left: -module.npos * module.sWidth }, 800);
             }
         },
         bullets: function (index) {
